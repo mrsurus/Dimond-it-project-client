@@ -1,20 +1,32 @@
 import React from 'react';
+import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
+import { authContext } from '../../AuthProvider/AuthProvider';
 
 const Registation = () => {
+    const {signUpWithEmailAndPassword} = useContext(authContext)
 
     const handleSubmit =(e)=> {
         e.preventDefault()
         const form = e.target
         const email = form.email.value;
         const password = form.password.value;
+        handleSignUpWithEmail(email,password)
 
+    }
+    const handleSignUpWithEmail = (email,password) =>{
+        signUpWithEmailAndPassword(email,password)
+        .then(res =>{
+            const user = res.user;
+            console.log(user);
+        })
+        .catch(err => console.log(err))
     }
     return (
         <Form onSubmit={handleSubmit} className=' mx-auto border shadow py-5 px-3' style={{ width: '400px' }}>
-        <h2>Please Log In</h2>
+        <h2>Please Register</h2>
         <Form.Group className="mb-3 my-3" controlId="formBasicEmail">
             <Form.Label>Name</Form.Label>
             <Form.Control name='name' type="text" placeholder="Enter name" />
@@ -40,7 +52,7 @@ const Registation = () => {
             Register
         </Button>
         <Form.Text className="text-muted">
-            <p>Already have an account? <Link to='/register'>please LogIn</Link> </p>
+            <p>Already have an account? <Link to='/login'>please LogIn</Link> </p>
         </Form.Text>
         
     </Form>

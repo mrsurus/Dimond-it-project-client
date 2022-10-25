@@ -19,10 +19,14 @@ const AuthProvider = ({children}) => {
     const logInWithEmail = (email,password) => {
        return signInWithEmailAndPassword(auth,email, password)
     }
+    const signUpWithEmailAndPassword = (email,password) => {
+       return createUserWithEmailAndPassword(auth,email, password)
+    }
     const userInfo = {
         user, 
         googleSingIn,
-        logInWithEmail
+        logInWithEmail,
+        signUpWithEmailAndPassword
     }
     return (
         <authContext.Provider value={userInfo}>
