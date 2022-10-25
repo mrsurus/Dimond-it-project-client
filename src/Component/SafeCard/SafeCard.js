@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 
+
 const SafeCard = () => {
     const data = useLoaderData();
     const {name, price, } = data;
