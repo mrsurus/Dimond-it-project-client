@@ -30,7 +30,10 @@ const AuthProvider = ({children}) => {
        return createUserWithEmailAndPassword(auth,email, password)
     }
 
-    
+    const getProfileInfo = (profile)=>{
+        return updateProfile(auth.currentUser, profile)
+    }
+
     useEffect( ()=>{
       const unsubscribe =  onAuthStateChanged(auth, (currentUser) =>{
             console.log('user is side website', currentUser);
@@ -41,10 +44,6 @@ const AuthProvider = ({children}) => {
             unsubscribe()
         }
     },[])
-
-    const getProfileInfo = (profile)=>{
-        return updateProfile(auth.currentUser, profile)
-    }
 
     const logOut = () => {
         setLoading(true)

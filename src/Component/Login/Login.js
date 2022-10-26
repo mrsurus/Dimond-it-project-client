@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { authContext } from '../../AuthProvider/AuthProvider';
 import { FaGithub, FaGoogle,  } from 'react-icons/fa';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 
 const Login = () => {
+    const [error, setError] = useState('')
     const GoogleProvider = new GoogleAuthProvider()
     const GithubProvider = new GithubAuthProvider()
     const {googleSingIn,logInWithEmail,githubSingIn} = useContext(authContext)
@@ -48,7 +49,9 @@ const Login = () => {
             navigate(from, {replace:true})
 
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            setError(err.message)
+        })
         
     }
 
@@ -68,7 +71,7 @@ const Login = () => {
                 <Form.Control name='password' type="password" placeholder="Password" />
             </Form.Group>
             <Form.Text className="text-muted">
-
+                    <p className='text-danger'>{error}</p>
             </Form.Text>
             <Button className='my-2' variant="primary" type="submit">
                 LogIn
