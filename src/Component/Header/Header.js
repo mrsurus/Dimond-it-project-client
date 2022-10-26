@@ -38,15 +38,15 @@ const Header = () => {
                     navbarScroll
                 ></Nav>
                 <div className=" me-5 d-lg-flex align-items-center  ">
-                    <Link to='/' className='text-white text-decoration-none mx-2 d-block'> Home</Link>
-                    <Link to='/course' className=' text-white text-decoration-none mx-2 d-block'>Course</Link>
-                    <Link to='/faq' className='text-white text-decoration-none mx-2 d-block' >FAQ</Link>
-                    <Link to='/blog' className='text-white text-decoration-none mx-2 d-block'>Blog</Link>
+                    <Link to='/' className='text-white text-decoration-none mx-3 d-block'> Home</Link>
+                    <Link to='/course' className=' text-white text-decoration-none mx-3 d-block'>Course</Link>
+                    <Link to='/faq' className='text-white text-decoration-none mx-3 d-block' >FAQ</Link>
+                    <Link to='/blog' className='text-white text-decoration-none mx-3 d-block'>Blog</Link>
                    {user?.uid? 
-                   <><Image style={ {width:'40px',height:'40px',borderRadius:'50px'}} src={user.photoURL}></Image>
-                   <Link onClick={handleLogOut} className='text-white text-decoration-none mx-2 d-block'>Log Out</Link>
+                   <><Image style={ {width:'40px',height:'40px',borderRadius:'50px'}}  src={user.photoURL} title={user.displayName} ></Image>
+                   <Link onClick={handleLogOut} className='text-white text-decoration-none mx-3 d-block'>Log Out</Link>
                    </> 
-                   :  <Link to='/login' className='text-white text-decoration-none mx-2 d-block'>LogIn</Link>}
+                   :  <Link to='/login' className='text-white text-decoration-none mx-3 d-block'>LogIn</Link>}
                     <Button onClick={handleTheme}>{theme? <>DARK </> : <>LIGHT</> }</Button>
                 </div>
             </Navbar.Collapse>
