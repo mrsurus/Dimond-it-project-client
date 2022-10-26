@@ -1,3 +1,4 @@
+import Blog from "../Component/Blog/Blog";
 import CardDetails from "../Component/CardDetails/CardDetails";
 import Login from "../Component/Login/Login";
 import NotFound from "../Component/NotFound/NotFound";
@@ -30,6 +31,10 @@ const  router = createBrowserRouter([
             loader: ({params})=> fetch(`http://localhost:5000/premium/${params.id}`)
         },
        
+        {
+            path: '/blog',
+            element:<Blog></Blog>
+        },
         {
             path: '/login',
             element:<Login></Login>

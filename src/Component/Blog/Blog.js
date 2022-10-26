@@ -1,9 +1,10 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 
 const Blog = () => {
     return (
-        <div>
-            <div>
+        <Container className='text-center'>
+            <div className='m-5  shadow border py-3  px-5 '>
                 <h1>What is CORS?</h1>
                 <p>CORS means ross-Origin Resource Sharing.It is an HTTP-header based mechanism that allows a server to indicate any origins (domain, scheme, or port) other
                      than its own from which a browser should permit loading resources. CORS also relies on a mechanism by which browsers make a "preflight" request to the server hosting the
@@ -12,14 +13,14 @@ const Blog = () => {
                     origins are permitted to read that information from a web browser.</p>
                 
             </div>
-            <div>
+            <div className='m-5  shadow border py-3  px-5 '>
                 <h1>Why are you using firebase? What other options do you have to implement authentication?</h1>
                 <p>The main reason for using firebase is implement authentication in website.Firebase is a Backend-as-a-Service (Baas). It provides developers with a variety
                      of tools and services to help them develop quality apps, grow their user base, and earn profit. It is built on Google’s infrastructure.
                     Firebase is categorized as a NoSQL database program, which stores data in JSON-like documents.There are lots of firebase alternative like STYTCH, Ory, Supabase,
                      Okta, PingIdentity,Authress,Auth0 etc. </p>
             </div>
-            <div>
+            <div className='m-5  shadow border py-3  px-5 '>
                 <h1>How does pirvate route work?</h1>
                 <p>The private route component is similar to the public route, the only change is that redirect URL and authenticate condition.
                 If the user is not authenticated he will be redirected to the login page and the user can only access the authenticated routes If he is authenticated (Logged in).
@@ -27,7 +28,7 @@ const Blog = () => {
                  protected pages when they are authorized (which means in this case being authenticated). Authorization goes beyond authentication though. For example, a user can also have 
                  roles and permissions which give a user access to specific areas of the application.</p>
             </div>
-            <div>
+            <div className='m-5  shadow border py-3  px-5 '>
                 <h1>What is Node?How does it work?</h1>
                 <p>As an asynchronous event-driven JavaScript runtime, Node.js is designed to build scalable network applications. In the following "hello world" example, many connections can be
                      handled concurrently. Upon each connection, the callback is fired,
@@ -35,10 +36,7 @@ const Blog = () => {
                      called whenever the asynchronous operation has resolved. By convention, the first argument of this callback is an error placeholder. If an error occurred in the asynchronous operation occurred (trying to read a non-existent file, for example), the error argument
                       will be an Error object, but it will be null if no error occurs.</p>
             </div>
-            <div>
-
-            </div>
-        </div>
+        </Container>
     );
 };
 
