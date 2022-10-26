@@ -1,5 +1,6 @@
 import CardDetails from "../Component/CardDetails/CardDetails";
 import Login from "../Component/Login/Login";
+import PrivateRoute from "../Component/PrivateRoute/PrivateRoute";
 import Registation from "../Component/Registation/Registation";
 import SafeCard from "../Component/SafeCard/SafeCard";
 
@@ -24,7 +25,7 @@ const  router = createBrowserRouter([
         },
         {
             path: '/premium/:id',
-            element:<SafeCard></SafeCard>,
+            element:<PrivateRoute><SafeCard></SafeCard></PrivateRoute>,
             loader: ({params})=> fetch(`http://localhost:5000/premium/${params.id}`)
         },
        

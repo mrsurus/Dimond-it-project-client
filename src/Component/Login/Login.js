@@ -4,16 +4,34 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { authContext } from '../../AuthProvider/AuthProvider';
 import { FaGithub, FaGoogle,  } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+
 
 const Login = () => {
-    const {googleSingIn,logInWithEmail} = useContext(authContext)
+    const GoogleProvider = new GoogleAuthProvider()
+    const GithubProvider = new GithubAuthProvider()
+    const {googleSingIn,logInWithEmail,githubSingIn} = useContext(authContext)
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
+    const navigate = useNavigate()
 
     const  handleGoogleSignIN =()=>{
-        googleSingIn()
+        googleSingIn(GoogleProvider)
         .then(res => {
             const user = res.user;
             console.log(user);
+            navigate(from, {replace:true})
+        })
+        .catch(err => console.log(err))
+    }
+
+    const  handleGithubSignIn =()=>{
+        githubSingIn(GithubProvider)
+        .then(res => {
+            const user = res.user;
+            console.log(user);
+            navigate(from, {replace:true})
         })
         .catch(err => console.log(err))
     }
@@ -23,17 +41,15 @@ const Login = () => {
         const form = e.target
         const email = form.email.value;
         const password = form.password.value;
-        handleEmailLogIn(email,password)
-        
-    }
-
-    const handleEmailLogIn = (email,password)=>{
         logInWithEmail(email, password)
         .then(res =>{
             const user = res.user;
             console.log(user);
+            navigate(from, {replace:true})
+
         })
         .catch(err => console.log(err))
+        
     }
 
     return (
@@ -62,7 +78,7 @@ const Login = () => {
             </Form.Text>
             <div className='d-flex justify-content-around'>
                 <Button variant='success' onClick={handleGoogleSignIN}>LogIn with <FaGoogle></FaGoogle></Button>
-                <Button variant='success'>LogIn with <FaGithub></FaGithub>  </Button>
+                <Button variant='success' onClick={handleGithubSignIn}>LogIn with <FaGithub></FaGithub>  </Button>
 
             </div>
         </Form>
