@@ -1,5 +1,6 @@
 import CardDetails from "../Component/CardDetails/CardDetails";
 import Login from "../Component/Login/Login";
+import NotFound from "../Component/NotFound/NotFound";
 import PrivateRoute from "../Component/PrivateRoute/PrivateRoute";
 import Registation from "../Component/Registation/Registation";
 import SafeCard from "../Component/SafeCard/SafeCard";
@@ -36,6 +37,10 @@ const  router = createBrowserRouter([
         {
             path: '/register',
             element:<Registation></Registation>
+        },
+        {
+            path: '/*',
+            element:<NotFound></NotFound>
         },
        ]
     }
