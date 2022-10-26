@@ -3,14 +3,27 @@ import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link, useLoaderData } from 'react-router-dom';
+import { useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
 
 const CardDetails = () => {
     const data = useLoaderData()
     const {image, name, details, price,rating,id} = data ;
+
+    const componentRef = useRef()
+    const handlePrint = useReactToPrint({
+        content: ()=> componentRef.current,
+        documentTitle:'Course-details',
+        onafterprint: ()=> alert('print succesfull')
+    })
     return (
         <Container>
-            <h2 className='text-center bg-success text-white py-4 rounded'>{name} is alawys a best choice</h2>
-                 <Card style={{ width: '75%', margin:'auto' }} >
+            <div>
+            <div className='text-center bg-success text-white py-4 rounded'>
+            <Button onClick={handlePrint}>Print This Page</Button>
+                <p className='h2'>{name} is alawys a best choice</p>
+                </div>
+                 <Card ref={componentRef} style={{ width: '75%', margin:'auto' }} >
                     <Card.Img variant="top" src={image} />
                     <Card.Body>
                         <Card.Title >{name}</Card.Title>
@@ -24,6 +37,8 @@ const CardDetails = () => {
                        </div>
                     </Card.Body>
                  </Card>
+            </div>
+            
         </Container>
     );
 };
