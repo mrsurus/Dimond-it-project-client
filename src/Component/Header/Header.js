@@ -46,7 +46,7 @@ const Header = () => {
                    <>{user.photoURL?<Image style={ {width:'40px',height:'40px',borderRadius:'50px',marginLeft:'10px'}}  src={user.photoURL} title={user.displayName} ></Image> : <CgProfile style={{width:'40px', height:'40px', marginLeft:'10px'}}></CgProfile>}
                    <Link onClick={handleLogOut} className='text-white text-decoration-none m-3 d-block '>LogOut</Link>
                    </> 
-                   :  <Link to='/login' className='text-white text-decoration-none mx-3 d-block '>LogIn</Link>}
+                   :  <Link to='/login' className='text-white text-decoration-none m-3 d-block '>LogIn</Link>}
                     <Button variant='dark' onClick={handleTheme}>{theme? <>DARK </> : <>LIGHT</> }</Button>
                 </div>
             </Navbar.Collapse>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './Home.css'
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
                         <h2>The Platform, Where you can learn everything you want.</h2>
                         <p>Explore our website so that you can know that what kind of service we
                             provide.Every course of our it is as stander as international.We believe that we provde the best service.</p>
+                        <Link to='/course'><Button>Our Courses</Button></Link>
                     </div>
                 </div>
                 <div className='text-img'>
