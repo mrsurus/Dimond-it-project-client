@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { authContext } from '../../AuthProvider/AuthProvider';

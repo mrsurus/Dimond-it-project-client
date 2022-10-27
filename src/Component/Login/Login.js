@@ -4,9 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { authContext } from '../../AuthProvider/AuthProvider';
 import { FaGithub, FaGoogle,  } from 'react-icons/fa';
-import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
-import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 
 
@@ -24,12 +23,13 @@ const Login = () => {
         .then(res => {
             const user = res.user;
             console.log(user);
+            navigate(from, {replace:true})
             Swal.fire(
                 'Good job!',
                 'Log In successful',
                 'success'
               )
-            navigate(from, {replace:true})
+            
         })
         .catch(err => console.log(err))
     }
@@ -39,12 +39,13 @@ const Login = () => {
         .then(res => {
             const user = res.user;
             console.log(user);
+            navigate(from, {replace:true})
             Swal.fire(
                 'Good job!',
                 'Log In successful',
                 'success'
               )
-            navigate(from, {replace:true})
+            
         })
         .catch(err => console.log(err))
     }
@@ -58,13 +59,12 @@ const Login = () => {
         .then(res =>{
             const user = res.user;
             console.log(user);
+            navigate(from, {replace:true})
             Swal.fire(
                 'Good job!',
                 'Log In successful',
                 'success'
               )
-            navigate(from, {replace:true})
-
         })
         .catch(err => {
             setError(err.message)
