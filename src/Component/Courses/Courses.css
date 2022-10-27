@@ -1,0 +1,27 @@
+
+.courses-body{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    text-align: center;
+    
+}
+
+
+@media screen and (max-width: 992px) {
+    .courses-body{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        
+        text-align: center;
+       
+    }
+}
+@media screen and (max-width: 698px) {
+    .courses-body{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        text-align: center;
+       
+    }
+}

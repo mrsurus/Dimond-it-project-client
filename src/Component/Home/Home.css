@@ -1,0 +1,33 @@
+
+.body{
+   margin: 0 5%;
+    display: flex;
+    padding: 5rem 0;
+}
+
+.text-div{
+    width: 50%;
+}
+.text-inner-div{
+    margin: 0 auto;
+    width: 70%;
+}
+.text-img{
+    width: 50%;
+}
+
+@media screen and (max-width: 999px) {
+    .body{
+        margin: 0 5%;
+         display: block;
+         padding: 5rem 0;
+     }
+     .text-div{
+        width: 100%;
+        
+    }
+    .text-img{
+        margin: 4rem 0;
+        width: 100%;
+    }
+}

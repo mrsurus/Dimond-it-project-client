@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import { Link, useLoaderData } from 'react-router-dom';
 import { useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
+import { FaPrint } from 'react-icons/fa';
 
 const CardDetails = () => {
     const data = useLoaderData()
@@ -19,9 +20,9 @@ const CardDetails = () => {
     return (
         <Container>
             <div>
-            <div className='text-center bg-success text-white py-4 rounded'>
-            <Button onClick={handlePrint}>Print This Page</Button>
-                <p className='h2'>{name} is alawys a best choice</p>
+            <div className='text-center  text-white py-4 rounded my-3' style={{backgroundColor:'#32CD32'}}>
+            <Button onClick={handlePrint}>Print This Page <FaPrint></FaPrint> </Button>
+                <p className='h2'>{name} is alawys a best choice.</p>
                 </div>
                  <Card ref={componentRef} style={{ width: '75%', margin:'auto' }} >
                     <Card.Img variant="top" src={image} />

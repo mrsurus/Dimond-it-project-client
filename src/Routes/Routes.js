@@ -1,5 +1,6 @@
 import Blog from "../Component/Blog/Blog";
 import CardDetails from "../Component/CardDetails/CardDetails";
+import Home from "../Component/Home/Home";
 import Login from "../Component/Login/Login";
 import NotFound from "../Component/NotFound/NotFound";
 import PrivateRoute from "../Component/PrivateRoute/PrivateRoute";
@@ -16,19 +17,23 @@ const  router = createBrowserRouter([
        element: <Main></Main>,
        children: [
         {
+            path:'/',
+            element: <Home></Home>
+        },
+        {
             path: '/course',
             element:<Courses></Courses>,
-            loader: ()=> fetch('http://localhost:5000/course')
+            loader: ()=> fetch('https://daimond-it-assignment-server.vercel.app/course')
         },
         {
             path: '/course/:id',
             element:<CardDetails></CardDetails>,
-            loader: ({params})=> fetch(`http://localhost:5000/course/${params.id}`)
+            loader: ({params})=> fetch(`https://daimond-it-assignment-server.vercel.app/course/${params.id}`)
         },
         {
             path: '/premium/:id',
             element:<PrivateRoute><SafeCard></SafeCard></PrivateRoute>,
-            loader: ({params})=> fetch(`http://localhost:5000/premium/${params.id}`)
+            loader: ({params})=> fetch(`https://daimond-it-assignment-server.vercel.app/premium/${params.id}`)
         },
        
         {

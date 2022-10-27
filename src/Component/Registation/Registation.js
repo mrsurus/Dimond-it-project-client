@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -6,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { authContext } from '../../AuthProvider/AuthProvider';
 
 const Registation = () => {
+    const [error, setError] = useState('')
     const { signUpWithEmailAndPassword, getProfileInfo } = useContext(authContext)
 
     const handleSubmit = (e) => {
@@ -20,10 +22,12 @@ const Registation = () => {
             .then(res => {
                 const user = res.user;
                 console.log(user);
+                setError('')
                 form.reset()
                 handleGetProfielInfo(name, photoURL)
+                
             })
-            .catch(err => console.log(err))
+            .catch(err => setError(err.message))
     }
 
     const handleGetProfielInfo = (name, photoURL) => {
@@ -32,8 +36,8 @@ const Registation = () => {
             photoURL: photoURL
         }
         getProfileInfo(profile)
-        .then(() => {})
-        .catch(err => console.log(err))
+            .then(() => { })
+            .catch(err => console.log(err))
     }
     return (
         <Form onSubmit={handleSubmit} className=' mx-auto border shadow py-5 px-3' style={{ width: '400px' }}>
@@ -49,15 +53,13 @@ const Registation = () => {
             <Form.Group className="mb-3 my-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control name='email' type="email" placeholder="Enter email" />
-
             </Form.Group>
-
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control name='password' type="password" placeholder="Password" />
             </Form.Group>
             <Form.Text className="text-muted">
-
+                <p className='text-danger'>{error}</p>
             </Form.Text>
             <Button className='my-2' variant="primary" type="submit">
                 Register
