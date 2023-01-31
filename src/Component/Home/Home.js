@@ -5,7 +5,7 @@ import './Home.css'
 const Home = () => {
     return (
         <div>
-            <div className='body' >
+            <div className='body ' style={{margin : '0 87px 0 87px'}}>
                 <div className='text-div'>
                     <div className='text-inner-div'>
                         <h1 className='text-primary' style={{ fontSize: '4rem' }}><span style={{ fontSize: '6rem' }}>D</span>aimond It</h1>
