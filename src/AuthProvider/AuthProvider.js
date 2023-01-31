@@ -13,6 +13,11 @@ const auth = getAuth(app)
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [theme, setTheme] = useState("light");
+
+    const handleThemeChange = () => {
+        setTheme(theme === "light" ? "dark" : "light");
+      };
     
     const googleSingIn = (provider)=> {
        return signInWithPopup(auth,provider)
@@ -58,7 +63,10 @@ const AuthProvider = ({children}) => {
         githubSingIn,
         logInWithEmail,
         signUpWithEmailAndPassword,
-        getProfileInfo
+        getProfileInfo,
+        handleThemeChange,
+        theme,
+        setTheme
     }
     return (
         <authContext.Provider value={userInfo}>

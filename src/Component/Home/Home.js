@@ -22,7 +22,27 @@ const Home = () => {
                         alt="" />
                 </div>
             </div>
-            <div style={{backgroundColor:'lightgrey'}}>
+
+            <div className=" bg-dark text-white rounded" style={{margin: '0 87px 87px 87px', padding: '60px'}}>
+                <h2 className="text-center my-5">Our Solution</h2>
+                <div className="row g-5">
+                    <div className="col-md-4">
+                        <h3>Digital Solutions</h3>
+                        <p>We offer cutting-edge digital solutions for your pharmacy needs. Our platform integrates with your current systems and streamlines your processes, making it easier for you to manage your business. </p>
+                    </div>
+                    <div className="col-md-4">
+                        <h3>Data Analytics</h3>
+                        <p>Our data analytics solutions provide you with real-time insights into your business performance. You can track your sales, inventory levels, and customer data, giving you a clear understanding of your business and helping you make informed decisions. </p>
+                    </div>
+                    <div className="col-md-4">
+                        <h3>Customer Engagement</h3>
+                        <p>We understand the importance of customer engagement in the pharmacy industry. Our platform provides you with the tools to connect with your customers, including loyalty programs, email campaigns, and SMS messaging. </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div className=' rounded' style={{ backgroundColor: 'lightgrey', margin: `0 87px 32px 87px`, color: 'black' }}>
                 <div className='body' >
                     <div className='text-img'>
                         <img

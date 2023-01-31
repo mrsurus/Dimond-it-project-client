@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 const CourseDetails = ({course}) => {
     const {name, image, details,id} = course;
     return (
-        <Card style={{ width: '100%', }} className='shadow' >
+        <Card style={{ width: '100%', color:'black'  }} className='shadow' >
             <Card.Img variant="top" src={image} />
-            <Card.Body>
+            <Card.Body >
                 <Card.Title >{name}</Card.Title>
                 <Card.Text>
                     {details.slice(0,120) + '.....'}

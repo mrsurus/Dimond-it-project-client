@@ -8,26 +8,23 @@ import Navbar from 'react-bootstrap/Navbar';
 import { FaCanadianMapleLeaf } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { authContext } from '../../AuthProvider/AuthProvider';
-import {CgProfile} from 'react-icons/cg'
+import { CgProfile } from 'react-icons/cg'
 
 const Header = () => {
-    const {user,logOut} =useContext(authContext)
-    const [theme, setTheme] = useState(true)
-    const handleLogOut =() => {
+    const { user, logOut, theme, setTheme, handleThemeChange } = useContext(authContext)
+    const handleLogOut = () => {
         logOut()
-        .then(() => {
+            .then(() => {
+
+            })
+            .catch(err => console.log(err))
+
+    }
     
-        })
-        .catch(err => console.log(err))
-        
-      }
-      const handleTheme =()=>{
-        setTheme(!theme)
-      }
-    
-    return <Navbar  className=' px-4' bg="primary" expand="lg"  >
+
+    return <Navbar className=' px-4' bg="primary" expand="lg"  >
         <Container fluid>
-            <Navbar className=' text-white ms-3 h2' style={{fontWeight:'bolder'}}>
+            <Navbar className=' text-white ms-3 h2' style={{ fontWeight: 'bolder' }}>
                 <FaCanadianMapleLeaf className=' me-1 text-warning'></FaCanadianMapleLeaf>
                 Daimond It</Navbar>
             <Navbar.Toggle aria-controls="navbarScroll" />
@@ -42,12 +39,18 @@ const Header = () => {
                     <Link to='/course' className=' text-white text-decoration-none m-3 d-block '>Course</Link>
                     <Link to='/faq' className='text-white text-decoration-none m-3 d-block ' >FAQ</Link>
                     <Link to='/blog' className='text-white text-decoration-none m-3 d-block '>Blog</Link>
-                   {user?.uid? 
-                   <>{user.photoURL?<Image style={ {width:'40px',height:'40px',borderRadius:'50px',marginLeft:'10px'}}  src={user.photoURL} title={user.displayName} ></Image> : <CgProfile style={{width:'40px', height:'40px', marginLeft:'10px'}}></CgProfile>}
-                   <Link onClick={handleLogOut} className='text-white text-decoration-none m-3 d-block '>LogOut</Link>
-                   </> 
-                   :  <Link to='/login' className='text-white text-decoration-none m-3 d-block '>LogIn</Link>}
-                    <Button variant='dark' onClick={handleTheme}>{theme? <>DARK </> : <>LIGHT</> }</Button>
+                    {user?.uid ?
+                        <>{user.photoURL ? <Image style={{ width: '40px', height: '40px', borderRadius: '50px', marginLeft: '10px' }} src={user.photoURL} title={user.displayName} ></Image> : <CgProfile style={{ width: '40px', height: '40px', marginLeft: '10px' }}></CgProfile>}
+                            <Link onClick={handleLogOut} className='text-white text-decoration-none m-3 d-block '>LogOut</Link>
+                        </>
+                        : <Link to='/login' className='text-white text-decoration-none m-3 d-block '>LogIn</Link>}
+                    <button
+                        className={`btn btn-${theme === "light" ? "dark" : "light"
+                            } `}
+                        onClick={handleThemeChange}
+                    >
+                      {theme === 'light'? 'Dark' : 'Light'}
+                    </button>
                 </div>
             </Navbar.Collapse>
         </Container>

@@ -73,7 +73,7 @@ const Login = () => {
     }
 
     return (
-        <Form onSubmit={handleSubmit} className=' mx-auto border shadow py-5 px-3' style={{ width: '400px' }}>
+        <Form onSubmit={handleSubmit} className=' mx-auto border shadow py-5 px-3 rounded' style={{ width: '400px', margin:'120px 0 120px 0' }}>
             <h2>Please Log In</h2>
             <Form.Group className="mb-3 my-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>

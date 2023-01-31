@@ -10,7 +10,7 @@ const Courses = () => {
     return (
         
             <Row className='mt-5 mx-5 p-2 '>
-                <Col md={4} className='border h-50 bg-light rounded shadow'  >
+                <Col md={4} className='border h-50 rounded shadow'  >
                     <div className ='w-75 mx-auto '>
                         {
                         data.map(c =>  <Link className='text-decoration-none  ' to={`/course/${c.id}`} key={c.id} ><Button className='my-5 d-block w-100 '>< p className='ms-0 h4'>{c.name}</p></Button> </Link>)

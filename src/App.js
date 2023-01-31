@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactToPrint from 'react-to-print';
 
 function App() {
-  return <RouterProvider router={router}>
+  return <RouterProvider  router={router}>
 
   </RouterProvider>
 

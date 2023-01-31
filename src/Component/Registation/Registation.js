@@ -3,13 +3,16 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { authContext } from '../../AuthProvider/AuthProvider';
 
 const Registation = () => {
     const [error, setError] = useState('')
     const { signUpWithEmailAndPassword, getProfileInfo } = useContext(authContext)
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
+    const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -26,6 +29,7 @@ const Registation = () => {
                 setError('')
                 form.reset()
                 handleGetProfielInfo(name, photoURL)
+                navigate(from, {replace: true})
                 Swal.fire(
                     'Good job!',
                     'Registation successful',
@@ -45,7 +49,7 @@ const Registation = () => {
             .catch(err => console.log(err))
     }
     return (
-        <Form onSubmit={handleSubmit} className=' mx-auto border shadow py-5 px-3' style={{ width: '400px' }}>
+        <Form onSubmit={handleSubmit} className=' mx-auto border shadow py-5 px-3' style={{ width: '400px' , margin: '120px 0 100px 0' }}>
             <h2>Please Register</h2>
             <Form.Group className="mb-3 my-3" controlId="formBasicEmail">
                 <Form.Label>Name</Form.Label>
